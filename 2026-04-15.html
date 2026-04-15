@@ -1,13 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Morning Edition — 2026-04-15</title>
+<title>아침판 — 2026-04-15</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap" rel="stylesheet">
 <style>
+@font-face {
+    font-family: 'Pretendard';
+    src: url('/Users/myunghwancho/Library/Fonts/Pretendard-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Pretendard';
+    src: url('/Users/myunghwancho/Library/Fonts/Pretendard-Regular.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Pretendard';
+    src: url('/Users/myunghwancho/Library/Fonts/Pretendard-Regular.otf') format('opentype');
+    font-weight: 900;
+    font-style: normal;
+}
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
@@ -18,10 +37,11 @@
 html { scroll-behavior: smooth; }
 
 body {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Pretendard', system-ui, -apple-system, sans-serif;
     background: var(--bg);
     color: var(--text);
     line-height: 1.4;
+    font-weight: 400;
 }
 
 /* ── HEADER ── */
@@ -38,9 +58,8 @@ body {
 }
 
 .magazine-header .edition {
-    font-family: 'Inter', sans-serif;
     font-size: 0.9rem;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: #ff6600;
@@ -58,7 +77,6 @@ body {
 }
 
 .magazine-header .date-line {
-    font-family: 'Inter', sans-serif;
     font-size: 1.2rem;
     font-weight: 300;
     color: #888;
@@ -95,7 +113,6 @@ body {
 }
 
 .issue-divider span {
-    font-family: 'Inter', sans-serif;
     font-weight: 800;
     font-size: 0.8rem;
     letter-spacing: 0.4em;
@@ -114,27 +131,11 @@ body {
     overflow: hidden;
 }
 
-.story.centered {
-    align-items: center;
-    text-align: center;
-}
-
-.story.left-aligned,
-.story.dropcap-layout {
-    align-items: flex-start;
-    text-align: left;
-}
-
-.story.stat-layout {
-    align-items: center;
-    text-align: center;
-}
-
-.story.horizontal-layout {
-    flex-direction: row;
-    align-items: center;
-    gap: 4rem;
-}
+.story.centered { align-items: center; text-align: center; }
+.story.left-aligned, .story.dropcap-layout { align-items: flex-start; text-align: left; }
+.story.stat-layout { align-items: center; text-align: center; }
+.story.columns-layout { align-items: flex-start; text-align: left; }
+.story.horizontal-layout { flex-direction: row; align-items: center; gap: 4rem; }
 
 /* ── NUMERALS ── */
 .numeral-overlay {
@@ -168,7 +169,6 @@ body {
     position: absolute;
     top: 2rem;
     right: 2rem;
-    font-family: 'Inter', sans-serif;
     font-size: 2rem;
     font-weight: 900;
     border: 4px solid currentColor;
@@ -189,10 +189,7 @@ body {
     margin-bottom: 2rem;
 }
 
-.numeral-terminal .prompt {
-    color: #00ff41;
-    opacity: 0.5;
-}
+.numeral-terminal .prompt { color: #00ff41; opacity: 0.5; }
 
 .numeral-roman {
     font-family: 'Fraunces', serif;
@@ -229,7 +226,6 @@ body {
 }
 
 .numeral-slide {
-    font-family: 'Inter', sans-serif;
     font-size: clamp(4rem, 10vw, 8rem);
     font-weight: 900;
     color: rgba(255,255,255,0.1);
@@ -247,14 +243,9 @@ body {
 }
 
 /* ── STORY BODY ── */
-.story-body {
-    max-width: 900px;
-    width: 100%;
-    z-index: 1;
-}
+.story-body { max-width: 900px; width: 100%; z-index: 1; }
 
 .story-score {
-    font-family: 'Inter', sans-serif;
     font-size: clamp(1.2rem, 3vw, 2rem);
     font-weight: 800;
     color: #ff6600;
@@ -262,15 +253,21 @@ body {
 }
 
 .story-title {
-    font-family: 'Fraunces', serif;
     font-size: clamp(2.5rem, 6vw, 5rem);
     font-weight: 700;
-    line-height: 1.1;
+    line-height: 1.15;
+    margin-bottom: 0.5rem;
+}
+
+.story-title-en {
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    font-weight: 400;
+    opacity: 0.5;
     margin-bottom: 1.5rem;
+    font-style: italic;
 }
 
 .story-domain {
-    font-family: 'Inter', sans-serif;
     font-size: clamp(0.9rem, 2vw, 1.2rem);
     font-weight: 500;
     opacity: 0.6;
@@ -283,14 +280,12 @@ body {
     display: flex;
     gap: 2rem;
     align-items: center;
-    font-family: 'Inter', sans-serif;
     font-size: clamp(1rem, 2vw, 1.4rem);
     font-weight: 500;
     flex-wrap: wrap;
 }
 
 .story-link {
-    font-family: 'Inter', sans-serif;
     font-size: clamp(1rem, 2vw, 1.4rem);
     font-weight: 700;
     color: #ff6600;
@@ -299,86 +294,43 @@ body {
     padding-bottom: 2px;
 }
 
-.story-link:hover {
-    color: #ff8533;
-}
-
-.story-score-small {
-    opacity: 0.7;
-}
+.story-link:hover { color: #ff8533; }
+.story-score-small { opacity: 0.7; }
 
 /* ── DROP CAP ── */
-.dropcap-layout {
-    flex-direction: row;
-    gap: 2rem;
-    max-width: 1000px;
-}
-
+.dropcap-layout { flex-direction: row; gap: 2rem; max-width: 1000px; }
 .dropcap {
-    font-family: 'Fraunces', serif;
     font-size: clamp(8rem, 20vw, 16rem);
     font-weight: 900;
     line-height: 0.85;
     color: #8b4513;
     flex-shrink: 0;
 }
-
-.story-text-wrap {
-    flex: 1;
-}
-
-.story-text-wrap .story-title {
-    font-size: clamp(2rem, 5vw, 4rem);
-}
+.story-text-wrap { flex: 1; }
+.story-text-wrap .story-title { font-size: clamp(2rem, 5vw, 4rem); }
 
 /* ── STAT LAYOUT ── */
-.stat-layout .stat-score {
+.stat-score {
     font-family: 'Fraunces', serif;
     font-size: clamp(6rem, 20vw, 16rem);
     font-weight: 900;
     color: #ffd700;
     line-height: 1;
 }
-
-.stat-layout .story-title {
-    font-size: clamp(1.8rem, 4vw, 3.5rem);
-    margin-top: 1rem;
-}
+.stat-layout .story-title { font-size: clamp(1.8rem, 4vw, 3.5rem); margin-top: 1rem; }
 
 /* ── HORIZONTAL ── */
-.horizontal-layout {
-    max-width: 100% !important;
-}
-
-.h-left {
-    flex-shrink: 0;
-    text-align: center;
-}
-
-.h-left .story-score {
-    font-size: 3rem;
-}
-
-.h-left .story-comments {
-    font-size: 1rem;
-    opacity: 0.6;
-    margin-top: 0.5rem;
-}
-
-.h-right {
-    flex: 1;
-}
-
-.h-right .story-title {
-    font-size: clamp(2rem, 5vw, 4rem);
-}
+.h-left { flex-shrink: 0; text-align: center; }
+.h-left .story-score { font-size: 3rem; }
+.h-left .story-comments { font-size: 1rem; opacity: 0.6; margin-top: 0.5rem; }
+.h-right { flex: 1; }
+.h-right .story-title { font-size: clamp(2rem, 5vw, 4rem); }
 
 /* ── FOR YOU TAG ── */
 .applies-tag {
     position: absolute;
     top: 2rem;
     left: 2rem;
-    font-family: 'Inter', sans-serif;
     font-size: 0.8rem;
     font-weight: 800;
     letter-spacing: 0.2em;
@@ -425,208 +377,148 @@ body {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
-    .story {
-        padding: 3rem 1.5rem;
-    }
-    .horizontal-layout {
-        flex-direction: column;
-    }
-    .dropcap-layout {
-        flex-direction: column;
-    }
-    .magazine-header .stats {
-        flex-direction: column;
-        gap: 1.5rem;
-    }
+    .story { padding: 3rem 1.5rem; }
+    .horizontal-layout { flex-direction: column; }
+    .dropcap-layout { flex-direction: column; }
+    .magazine-header .stats { flex-direction: column; gap: 1.5rem; }
 }
 
 /* ── SCROLLBAR ── */
-::-webkit-scrollbar {
-    width: 8px;
-}
-::-webkit-scrollbar-track {
-    background: #1a1a1a;
-}
-::-webkit-scrollbar-thumb {
-    background: #ff6600;
-    border-radius: 4px;
-}
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #1a1a1a; }
+::-webkit-scrollbar-thumb { background: #ff6600; border-radius: 4px; }
 </style>
 </head>
 <body>
 
-<!-- ── HEADER ── -->
 <header class="magazine-header">
-    <div class="edition">Morning Edition</div>
+    <div class="edition">아침판</div>
     <h1>Hacker<br>News</h1>
-    <div class="date-line">April 15, 2026 · Curated for you</div>
+    <div class="date-line">2026年 04月 15日 · 취향에 맞춰 골라봤어요</div>
     <div class="stats">
         <div>
             <div class="stat">10</div>
-            <div class="stat-label">Stories</div>
+            <div class="stat-label">스토리</div>
         </div>
         <div>
             <div class="stat">10</div>
-            <div class="stat-label">For You</div>
+            <div class="stat-label">나를 위한</div>
         </div>
     </div>
 </header>
 
-<!-- ── DIVIDER ── -->
-<div class="issue-divider"><span>Today's Curated Picks</span></div>
+<div class="issue-divider"><span>오늘의 선택</span></div>
 
-<!-- ── STORIES ── -->
-
-    <article class="story centered">
-        <div class="numeral-overlay">1</div>
-        <div class="applies-tag">★ FOR YOU</div>
-        
+<article class="story centered"><div class="numeral-overlay">1</div><div class="applies-tag">★ 나를 위한</div>
         <div class="story-body centered">
-            <div class="story-score">88 pts</div>
-            <h2 class="story-title">Show HN: Plain – The full-stack Python framework designed for humans and agents</h2>
-            <div class="story-domain">github.com</div>
+            <div class="story-score">5 pts</div>
+            <h2 class="story-title">해커 뉴스 CLI</h2>
+            <p class="story-title-en">Hacker News CLI</p>
+            <div class="story-domain">pythonhosted.org</div>
             <div class="story-meta">
-                <span class="story-comments">49 comments</span>
-                <a href="https://github.com/dropseed/plain" class="story-link" target="_blank">Read →</a>
+                <span class="story-comments">0개의 댓글</span>
+                <a href="https://pythonhosted.org/hackernews-cli/commands.html" class="story-link" target="_blank">읽기 →</a>
             </div>
-        </div>
-    </article>
-    <article class="story left">
-        <div class="numeral-big-left"><span class="num">2</span></div>
-        <div class="applies-tag">★ FOR YOU</div>
-        
+        </div></article><article class="story left"><div class="numeral-big-left"><span class="num">2</span></div><div class="applies-tag">★ 나를 위한</div>
         <div class="story-body left-aligned">
-            <div class="story-score">172 pts</div>
-            <h2 class="story-title">Elevated errors on Claude.ai, API, Claude Code</h2>
-            <div class="story-domain">claudestatus.com</div>
-            <div class="story-meta">
-                <span class="story-comments">145 comments</span>
-                <a href="https://claudestatus.com/" class="story-link" target="_blank">Read →</a>
-            </div>
-        </div>
-    </article>
-    <article class="story centered">
-        <div class="numeral-stamp">#3</div>
-        <div class="applies-tag">★ FOR YOU</div>
-        
-        <div class="story-body centered">
-            <div class="story-score">141 pts</div>
-            <h2 class="story-title">Show HN: LangAlpha – what if Claude Code was built for Wall Street?</h2>
-            <div class="story-domain">github.com</div>
-            <div class="story-meta">
-                <span class="story-comments">49 comments</span>
-                <a href="https://github.com/ginlix-ai/langalpha" class="story-link" target="_blank">Read →</a>
-            </div>
-        </div>
-    </article>
-    <article class="story left">
-        <div class="numeral-terminal"><span class="prompt">$</span> 4</div>
-        <div class="applies-tag">★ FOR YOU</div>
-        
-        <div class="story-body left-aligned">
-            <div class="story-score">49 pts</div>
-            <h2 class="story-title">&#x27;Seeking connection&#x27;: video game where players stopped shooting, started talking</h2>
-            <div class="story-domain">www.theguardian.com</div>
-            <div class="story-meta">
-                <span class="story-comments">56 comments</span>
-                <a href="https://www.theguardian.com/games/2026/apr/15/arc-raiders-players-stopped-shooting-started-talking" class="story-link" target="_blank">Read →</a>
-            </div>
-        </div>
-    </article>
-    <article class="story left-dropcap">
-        <div class="numeral-roman">V</div>
-        <div class="applies-tag">★ FOR YOU</div>
-        
-        <div class="story-body dropcap-layout">
-            <div class="dropcap">W</div>
-            <div class="story-text-wrap">
-                <h2 class="story-title">What Claude Code&#x27;s Source Revealed About AI Engineering Culture</h2>
-                <div class="story-domain">techtrenches.dev</div>
-                <div class="story-meta">
-                    <span class="story-score-small">50 pts · 35 comments</span>
-                    <a href="https://techtrenches.dev/p/the-snake-that-ate-itself-what-claude" class="story-link" target="_blank">Read →</a>
-                </div>
-            </div>
-        </div>
-    </article>
-    <article class="story stat">
-        <div class="numeral-giant">6</div>
-        <div class="applies-tag">★ FOR YOU</div>
-        
-        <div class="story-body stat-layout">
-            <div class="stat-score">684</div>
-            <h2 class="story-title">Claude Code Routines</h2>
+            <div class="story-score">696 pts</div>
+            <h2 class="story-title">클로드 코드 루틴</h2>
+            <p class="story-title-en">Claude Code Routines</p>
             <div class="story-domain">code.claude.com</div>
             <div class="story-meta">
-                <span class="story-comments">382 comments</span>
-                <a href="https://code.claude.com/docs/en/routines" class="story-link" target="_blank">Read →</a>
+                <span class="story-comments">396개의 댓글</span>
+                <a href="https://code.claude.com/docs/en/routines" class="story-link" target="_blank">읽기 →</a>
             </div>
-        </div>
-    </article>
-    <article class="story columns">
-        <div class="numeral-oldstyle">7</div>
-        <div class="applies-tag">★ FOR YOU</div>
-        
-        <div class="story-body">
-            <h2 class="story-title">Claude may require identity verification in some cases</h2>
-            <div class="story-meta">
-                <span class="story-score-small">93 pts</span>
-                <div class="story-domain">support.claude.com</div>
-                <span class="story-comments">80 comments</span>
-                <a href="https://support.claude.com/en/articles/14328960-identity-verification-on-claude" class="story-link" target="_blank">Read →</a>
-            </div>
-        </div>
-    </article>
-    <article class="story centered">
-        <div class="numeral-outline">8</div>
-        <div class="applies-tag">★ FOR YOU</div>
-        
+        </div></article><article class="story centered"><div class="numeral-stamp">#3</div><div class="applies-tag">★ 나를 위한</div>
         <div class="story-body centered">
-            <div class="story-score">186 pts</div>
-            <h2 class="story-title">Turn your best AI prompts into one-click tools in Chrome</h2>
+            <div class="story-score">191 pts</div>
+            <h2 class="story-title">최고의 AI 프롬프트를 Chrome의 원클릭 도구로 변환하세요</h2>
+            <p class="story-title-en">Turn your best AI prompts into one-click tools in Chrome</p>
             <div class="story-domain">blog.google</div>
             <div class="story-meta">
-                <span class="story-comments">101 comments</span>
-                <a href="https://blog.google/products-and-platforms/products/chrome/skills-in-chrome/" class="story-link" target="_blank">Read →</a>
+                <span class="story-comments">105개의 댓글</span>
+                <a href="https://blog.google/products-and-platforms/products/chrome/skills-in-chrome/" class="story-link" target="_blank">읽기 →</a>
             </div>
-        </div>
-    </article>
-    <article class="story horizontal">
-        <div class="numeral-slide">9</div>
-        <div class="applies-tag">★ FOR YOU</div>
-        
+        </div></article><article class="story left"><div class="numeral-terminal"><span class="prompt">$</span> 4</div><div class="applies-tag">★ 나를 위한</div>
+        <div class="story-body left-aligned">
+            <div class="story-score">56 pts</div>
+            <h2 class="story-title">40년 된 프린터 컨트롤러(Agfa Compugraphic 9000PS)에서 Doom을 실행했습니다. [동영상]</h2>
+            <p class="story-title-en">We ran Doom on a 40 year old printer controller (Agfa Compugraphic 9000PS) [video]</p>
+            <div class="story-domain">www.youtube.com</div>
+            <div class="story-meta">
+                <span class="story-comments">23개의 댓글</span>
+                <a href="https://www.youtube.com/watch?v=cltnlks2-uU" class="story-link" target="_blank">읽기 →</a>
+            </div>
+        </div></article><article class="story left-dropcap"><div class="numeral-roman">V</div><div class="applies-tag">★ 나를 위한</div>
+        <div class="story-body dropcap-layout">
+            <div class="dropcap">G</div>
+            <div class="story-text-wrap">
+                <h2 class="story-title">Google Gemma 4는 전체 오프라인 AI 추론을 통해 iPhone에서 기본적으로 실행됩니다.</h2>
+                <p class="story-title-en">Google Gemma 4 Runs Natively on iPhone with Full Offline AI Inference</p>
+                <div class="story-domain">www.gizmoweek.com</div>
+                <div class="story-meta">
+                    <span class="story-score-small">260 pts · 166개의 댓글</span>
+                    <a href="https://www.gizmoweek.com/gemma-4-runs-iphone/" class="story-link" target="_blank">읽기 →</a>
+                </div>
+            </div>
+        </div></article><article class="story stat"><div class="numeral-giant">6</div><div class="applies-tag">★ 나를 위한</div>
+        <div class="story-body stat-layout">
+            <div class="stat-score">307</div>
+            <h2 class="story-title">오픈소스는 죽지 않았다</h2>
+            <p class="story-title-en">Open Source Isn&#x27;t Dead</p>
+            <div class="story-domain">www.strix.ai</div>
+            <div class="story-meta">
+                <span class="story-comments">165개의 댓글</span>
+                <a href="https://www.strix.ai/blog/cal-com-is-closing-its-code-due-to-ai-threats" class="story-link" target="_blank">읽기 →</a>
+            </div>
+        </div></article><article class="story columns"><div class="numeral-oldstyle">7</div><div class="applies-tag">★ 나를 위한</div>
+        <div class="story-body">
+            <h2 class="story-title">Gemini 3.1 Flash TTS: 표현력이 풍부한 차세대 AI 음성</h2>
+            <p class="story-title-en">Gemini 3.1 Flash TTS: the next generation of expressive AI speech</p>
+            <div class="story-meta">
+                <span class="story-score-small">13 pts</span>
+                <div class="story-domain">blog.google</div>
+                <span class="story-comments">0개의 댓글</span>
+                <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-flash-tts/" class="story-link" target="_blank">읽기 →</a>
+            </div>
+        </div></article><article class="story centered"><div class="numeral-outline">8</div><div class="applies-tag">★ 나를 위한</div>
+        <div class="story-body centered">
+            <div class="story-score">106 pts</div>
+            <h2 class="story-title">API 키 디자인에 대한 나의 모험</h2>
+            <p class="story-title-en">My adventure in designing API keys</p>
+            <div class="story-domain">vjay15.github.io</div>
+            <div class="story-meta">
+                <span class="story-comments">73개의 댓글</span>
+                <a href="https://vjay15.github.io/blog/apikeys/" class="story-link" target="_blank">읽기 →</a>
+            </div>
+        </div></article><article class="story horizontal"><div class="numeral-slide">9</div><div class="applies-tag">★ 나를 위한</div>
         <div class="story-body horizontal-layout">
             <div class="h-left">
-                <div class="story-score">25 pts</div>
-                <div class="story-comments">22 comments</div>
+                <div class="story-score">5 pts</div>
+                <div class="story-comments">0개의 댓글</div>
             </div>
             <div class="h-right">
-                <h2 class="story-title">Your codebase doesn&#x27;t care how it got written</h2>
-                <div class="story-domain">robbyonrails.com</div>
-                <a href="https://robbyonrails.com/articles/2026/04/14/your-codebase-doesnt-care-how-it-got-written/" class="story-link" target="_blank">Read →</a>
+                <h2 class="story-title">정규직으로 일하면서 창의적인 활력 유지</h2>
+                <p class="story-title-en">Sustaining creative aliveness while working a full time job</p>
+                <div class="story-domain">www.startingfromnix.com</div>
+                <a href="https://www.startingfromnix.com/p/sustaining-creative-aliveness-while" class="story-link" target="_blank">읽기 →</a>
             </div>
-        </div>
-    </article>
-    <article class="story centered">
-        <div class="numeral-finish">#10</div>
-        <div class="applies-tag">★ FOR YOU</div>
-        
+        </div></article><article class="story centered"><div class="numeral-finish">#10</div><div class="applies-tag">★ 나를 위한</div>
         <div class="story-body centered">
-            <div class="story-score">114 pts</div>
-            <h2 class="story-title">Multi-Agentic Software Development Is a Distributed Systems Problem</h2>
-            <div class="story-domain">kirancodes.me</div>
+            <div class="story-score">71 pts</div>
+            <h2 class="story-title">Pomera DM250 Writerdeck에 OpenBSD 설치</h2>
+            <p class="story-title-en">Installing OpenBSD on the Pomera DM250 Writerdeck</p>
+            <div class="story-domain">jcs.org</div>
             <div class="story-meta">
-                <span class="story-comments">63 comments</span>
-                <a href="https://kirancodes.me/posts/log-distributed-llms.html" class="story-link" target="_blank">Read →</a>
+                <span class="story-comments">14개의 댓글</span>
+                <a href="https://jcs.org/2026/04/09/openbsd-dm250" class="story-link" target="_blank">읽기 →</a>
             </div>
-        </div>
-    </article>
+        </div></article>
 
-<!-- ── FOOTER ── -->
 <footer class="magazine-footer">
-    <h3>See you<br>tomorrow.</h3>
-    <p>Curated every morning from Hacker News. Skipped: medical, economics, politics.</p>
-    <div class="credit">Morning Edition · Generated April 15, 2026</div>
+    <h3>내일<br>또 만나요.</h3>
+    <p>매일 아침 Hacker News에서 취향에 맞는 이야기를 골라봤어요.</p>
+    <div class="credit">아침판 · 2026年 04月 15日 발행</div>
 </footer>
 
 </body>
