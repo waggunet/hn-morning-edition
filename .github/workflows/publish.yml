@@ -11,14 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Enable Pages
-        run: |
-          gh api repos/{owner}/{repo}/pages --method POST \
-            --field build_type=workflow \
-            --field source[branch]=main \
-            --field source[path]=/
-
-      - name: Upload magazine
+      - name: Upload magazine files
         run: |
           echo "Published at $(date +%Y-%m-%d)"
-          echo "Available at https://waggunet.github.io/hn-morning-edition/"
+          ls -la
