@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morning Edition — 2026-04-15</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+    --bg: #fafaf8;
+    --text: #1a1a1a;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.4;
+}
+
+/* ── HEADER ── */
+.magazine-header {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: #0a0a0a;
+    color: #f5f5f5;
+    padding: 4rem 2rem;
+}
+
+.magazine-header .edition {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #ff6600;
+    margin-bottom: 1.5rem;
+}
+
+.magazine-header h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(4rem, 15vw, 12rem);
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    color: #f5f5f5;
+    margin-bottom: 2rem;
+}
+
+.magazine-header .date-line {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: #888;
+}
+
+.magazine-header .stats {
+    display: flex;
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.magazine-header .stat {
+    font-family: 'Fraunces', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #ff6600;
+}
+
+.magazine-header .stat-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #666;
+    margin-top: 0.3rem;
+}
+
+/* ── DIVIDER ── */
+.issue-divider {
+    height: 4rem;
+    background: #ff6600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.issue-divider span {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 0.8rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: #0a0a0a;
+}
+
+/* ── STORY ── */
+.story {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 3rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.story.centered {
+    align-items: center;
+    text-align: center;
+}
+
+.story.left-aligned,
+.story.dropcap-layout {
+    align-items: flex-start;
+    text-align: left;
+}
+
+.story.stat-layout {
+    align-items: center;
+    text-align: center;
+}
+
+.story.horizontal-layout {
+    flex-direction: row;
+    align-items: center;
+    gap: 4rem;
+}
+
+/* ── NUMERALS ── */
+.numeral-overlay {
+    position: absolute;
+    top: -0.15em;
+    right: -0.05em;
+    font-family: 'Fraunces', serif;
+    font-size: clamp(15rem, 40vw, 35rem);
+    font-weight: 900;
+    color: rgba(255,255,255,0.06);
+    line-height: 1;
+    user-select: none;
+    pointer-events: none;
+}
+
+.numeral-big-left {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+}
+
+.numeral-big-left .num {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(6rem, 15vw, 12rem);
+    font-weight: 900;
+    color: rgba(255,255,255,0.1);
+    line-height: 1;
+}
+
+.numeral-stamp {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    border: 4px solid currentColor;
+    border-radius: 50%;
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.5;
+    transform: rotate(15deg);
+}
+
+.numeral-terminal {
+    font-family: 'Courier New', monospace;
+    font-size: clamp(3rem, 8vw, 6rem);
+    color: #00ff41;
+    margin-bottom: 2rem;
+}
+
+.numeral-terminal .prompt {
+    color: #00ff41;
+    opacity: 0.5;
+}
+
+.numeral-roman {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(5rem, 12vw, 10rem);
+    font-weight: 900;
+    color: rgba(0,0,0,0.08);
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+
+.numeral-giant {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(8rem, 25vw, 20rem);
+    font-weight: 900;
+    color: rgba(255,255,255,0.15);
+    line-height: 1;
+}
+
+.numeral-oldstyle {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(4rem, 10vw, 8rem);
+    font-weight: 700;
+    color: rgba(0,0,0,0.1);
+    margin-bottom: 1rem;
+}
+
+.numeral-outline {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(5rem, 12vw, 10rem);
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 3px currentColor;
+    line-height: 1;
+}
+
+.numeral-slide {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(4rem, 10vw, 8rem);
+    font-weight: 900;
+    color: rgba(255,255,255,0.1);
+    line-height: 1;
+    min-width: 3em;
+}
+
+.numeral-finish {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(5rem, 15vw, 12rem);
+    font-weight: 900;
+    color: rgba(255,255,255,0.2);
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+
+/* ── STORY BODY ── */
+.story-body {
+    max-width: 900px;
+    width: 100%;
+    z-index: 1;
+}
+
+.story-score {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    font-weight: 800;
+    color: #ff6600;
+    margin-bottom: 1rem;
+}
+
+.story-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.story-domain {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    font-weight: 500;
+    opacity: 0.6;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.story-meta {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    font-weight: 500;
+    flex-wrap: wrap;
+}
+
+.story-link {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    font-weight: 700;
+    color: #ff6600;
+    text-decoration: none;
+    border-bottom: 2px solid currentColor;
+    padding-bottom: 2px;
+}
+
+.story-link:hover {
+    color: #ff8533;
+}
+
+.story-score-small {
+    opacity: 0.7;
+}
+
+/* ── DROP CAP ── */
+.dropcap-layout {
+    flex-direction: row;
+    gap: 2rem;
+    max-width: 1000px;
+}
+
+.dropcap {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(8rem, 20vw, 16rem);
+    font-weight: 900;
+    line-height: 0.85;
+    color: #8b4513;
+    flex-shrink: 0;
+}
+
+.story-text-wrap {
+    flex: 1;
+}
+
+.story-text-wrap .story-title {
+    font-size: clamp(2rem, 5vw, 4rem);
+}
+
+/* ── STAT LAYOUT ── */
+.stat-layout .stat-score {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(6rem, 20vw, 16rem);
+    font-weight: 900;
+    color: #ffd700;
+    line-height: 1;
+}
+
+.stat-layout .story-title {
+    font-size: clamp(1.8rem, 4vw, 3.5rem);
+    margin-top: 1rem;
+}
+
+/* ── HORIZONTAL ── */
+.horizontal-layout {
+    max-width: 100% !important;
+}
+
+.h-left {
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.h-left .story-score {
+    font-size: 3rem;
+}
+
+.h-left .story-comments {
+    font-size: 1rem;
+    opacity: 0.6;
+    margin-top: 0.5rem;
+}
+
+.h-right {
+    flex: 1;
+}
+
+.h-right .story-title {
+    font-size: clamp(2rem, 5vw, 4rem);
+}
+
+/* ── FOR YOU TAG ── */
+.applies-tag {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: #ffd700;
+    color: #0a0a0a;
+    padding: 0.4rem 0.8rem;
+    border-radius: 2px;
+    z-index: 2;
+}
+
+/* ── FOOTER ── */
+.magazine-footer {
+    min-height: 50vh;
+    background: #0a0a0a;
+    color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.magazine-footer h3 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 900;
+    margin-bottom: 1rem;
+}
+
+.magazine-footer p {
+    font-size: 1.2rem;
+    color: #888;
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+.magazine-footer .credit {
+    margin-top: 3rem;
+    font-size: 0.8rem;
+    color: #444;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+    .story {
+        padding: 3rem 1.5rem;
+    }
+    .horizontal-layout {
+        flex-direction: column;
+    }
+    .dropcap-layout {
+        flex-direction: column;
+    }
+    .magazine-header .stats {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+::-webkit-scrollbar-thumb {
+    background: #ff6600;
+    border-radius: 4px;
+}
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header class="magazine-header">
+    <div class="edition">Morning Edition</div>
+    <h1>Hacker<br>News</h1>
+    <div class="date-line">April 15, 2026 · Curated for you</div>
+    <div class="stats">
+        <div>
+            <div class="stat">10</div>
+            <div class="stat-label">Stories</div>
+        </div>
+        <div>
+            <div class="stat">10</div>
+            <div class="stat-label">For You</div>
+        </div>
+    </div>
+</header>
+
+<!-- ── DIVIDER ── -->
+<div class="issue-divider"><span>Today's Curated Picks</span></div>
+
+<!-- ── STORIES ── -->
+
+    <article class="story centered">
+        <div class="numeral-overlay">1</div>
+        <div class="applies-tag">★ FOR YOU</div>
+        
+        <div class="story-body centered">
+            <div class="story-score">88 pts</div>
+            <h2 class="story-title">Show HN: Plain – The full-stack Python framework designed for humans and agents</h2>
+            <div class="story-domain">github.com</div>
+            <div class="story-meta">
+                <span class="story-comments">49 comments</span>
+                <a href="https://github.com/dropseed/plain" class="story-link" target="_blank">Read →</a>
+            </div>
+        </div>
+    </article>
+    <article class="story left">
+        <div class="numeral-big-left"><span class="num">2</span></div>
+        <div class="applies-tag">★ FOR YOU</div>
+        
+        <div class="story-body left-aligned">
+            <div class="story-score">168 pts</div>
+            <h2 class="story-title">Elevated errors on Claude.ai, API, Claude Code</h2>
+            <div class="story-domain">claudestatus.com</div>
+            <div class="story-meta">
+                <span class="story-comments">144 comments</span>
+                <a href="https://claudestatus.com/" class="story-link" target="_blank">Read →</a>
+            </div>
+        </div>
+    </article>
+    <article class="story centered">
+        <div class="numeral-stamp">#3</div>
+        <div class="applies-tag">★ FOR YOU</div>
+        
+        <div class="story-body centered">
+            <div class="story-score">140 pts</div>
+            <h2 class="story-title">Show HN: LangAlpha – what if Claude Code was built for Wall Street?</h2>
+            <div class="story-domain">github.com</div>
+            <div class="story-meta">
+                <span class="story-comments">49 comments</span>
+                <a href="https://github.com/ginlix-ai/langalpha" class="story-link" target="_blank">Read →</a>
+            </div>
+        </div>
+    </article>
+    <article class="story left">
+        <div class="numeral-terminal"><span class="prompt">$</span> 4</div>
+        <div class="applies-tag">★ FOR YOU</div>
+        
+        <div class="story-body left-aligned">
+            <div class="story-score">49 pts</div>
+            <h2 class="story-title">&#x27;Seeking connection&#x27;: video game where players stopped shooting, started talking</h2>
+            <div class="story-domain">www.theguardian.com</div>
+            <div class="story-meta">
+                <span class="story-comments">56 comments</span>
+                <a href="https://www.theguardian.com/games/2026/apr/15/arc-raiders-players-stopped-shooting-started-talking" class="story-link" target="_blank">Read →</a>
+            </div>
+        </div>
+    </article>
+    <article class="story left-dropcap">
+        <div class="numeral-roman">V</div>
+        <div class="applies-tag">★ FOR YOU</div>
+        
+        <div class="story-body dropcap-layout">
+            <div class="dropcap">W</div>
+            <div class="story-text-wrap">
+                <h2 class="story-title">What Claude Code&#x27;s Source Revealed About AI Engineering Culture</h2>
+                <div class="story-domain">techtrenches.dev</div>
+                <div class="story-meta">
+                    <span class="story-score-small">50 pts · 35 comments</span>
+                    <a href="https://techtrenches.dev/p/the-snake-that-ate-itself-what-claude" class="story-link" target="_blank">Read →</a>
+                </div>
+            </div>
+        </div>
+    </article>
+    <article class="story stat">
+        <div class="numeral-giant">6</div>
+        <div class="applies-tag">★ FOR YOU</div>
+        
+        <div class="story-body stat-layout">
+            <div class="stat-score">684</div>
+            <h2 class="story-title">Claude Code Routines</h2>
+            <div class="story-domain">code.claude.com</div>
+            <div class="story-meta">
+                <span class="story-comments">381 comments</span>
+                <a href="https://code.claude.com/docs/en/routines" class="story-link" target="_blank">Read →</a>
+            </div>
+        </div>
+    </article>
+    <article class="story columns">
+        <div class="numeral-oldstyle">7</div>
+        <div class="applies-tag">★ FOR YOU</div>
+        
+        <div class="story-body">
+            <h2 class="story-title">Claude may require identity verification in some cases</h2>
+            <div class="story-meta">
+                <span class="story-score-small">93 pts</span>
+                <div class="story-domain">support.claude.com</div>
+                <span class="story-comments">80 comments</span>
+                <a href="https://support.claude.com/en/articles/14328960-identity-verification-on-claude" class="story-link" target="_blank">Read →</a>
+            </div>
+        </div>
+    </article>
+    <article class="story centered">
+        <div class="numeral-outline">8</div>
+        <div class="applies-tag">★ FOR YOU</div>
+        
+        <div class="story-body centered">
+            <div class="story-score">185 pts</div>
+            <h2 class="story-title">Turn your best AI prompts into one-click tools in Chrome</h2>
+            <div class="story-domain">blog.google</div>
+            <div class="story-meta">
+                <span class="story-comments">101 comments</span>
+                <a href="https://blog.google/products-and-platforms/products/chrome/skills-in-chrome/" class="story-link" target="_blank">Read →</a>
+            </div>
+        </div>
+    </article>
+    <article class="story horizontal">
+        <div class="numeral-slide">9</div>
+        <div class="applies-tag">★ FOR YOU</div>
+        
+        <div class="story-body horizontal-layout">
+            <div class="h-left">
+                <div class="story-score">25 pts</div>
+                <div class="story-comments">22 comments</div>
+            </div>
+            <div class="h-right">
+                <h2 class="story-title">Your codebase doesn&#x27;t care how it got written</h2>
+                <div class="story-domain">robbyonrails.com</div>
+                <a href="https://robbyonrails.com/articles/2026/04/14/your-codebase-doesnt-care-how-it-got-written/" class="story-link" target="_blank">Read →</a>
+            </div>
+        </div>
+    </article>
+    <article class="story centered">
+        <div class="numeral-finish">#10</div>
+        <div class="applies-tag">★ FOR YOU</div>
+        
+        <div class="story-body centered">
+            <div class="story-score">114 pts</div>
+            <h2 class="story-title">Multi-Agentic Software Development Is a Distributed Systems Problem</h2>
+            <div class="story-domain">kirancodes.me</div>
+            <div class="story-meta">
+                <span class="story-comments">63 comments</span>
+                <a href="https://kirancodes.me/posts/log-distributed-llms.html" class="story-link" target="_blank">Read →</a>
+            </div>
+        </div>
+    </article>
+
+<!-- ── FOOTER ── -->
+<footer class="magazine-footer">
+    <h3>See you<br>tomorrow.</h3>
+    <p>Curated every morning from Hacker News. Skipped: medical, economics, politics.</p>
+    <div class="credit">Morning Edition · Generated April 15, 2026</div>
+</footer>
+
+</body>
+</html>
