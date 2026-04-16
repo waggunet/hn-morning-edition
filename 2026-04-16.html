@@ -1,13 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>아침판 — 2026-04-16</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap" rel="stylesheet">
 <style>
+@font-face {
+    font-family: 'Pretendard';
+    src: url('/Users/myunghwancho/Library/Fonts/Pretendard-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Pretendard';
+    src: url('/Users/myunghwancho/Library/Fonts/Pretendard-Regular.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Pretendard';
+    src: url('/Users/myunghwancho/Library/Fonts/Pretendard-Regular.otf') format('opentype');
+    font-weight: 900;
+    font-style: normal;
+}
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
@@ -18,10 +37,11 @@
 html { scroll-behavior: smooth; }
 
 body {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Pretendard', system-ui, -apple-system, sans-serif;
     background: var(--bg);
     color: var(--text);
     line-height: 1.4;
+    font-weight: 400;
 }
 
 /* ── HEADER ── */
@@ -38,9 +58,8 @@ body {
 }
 
 .magazine-header .edition {
-    font-family: 'Inter', sans-serif;
     font-size: 0.9rem;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: #ff6600;
@@ -58,7 +77,6 @@ body {
 }
 
 .magazine-header .date-line {
-    font-family: 'Inter', sans-serif;
     font-size: 1.2rem;
     font-weight: 300;
     color: #888;
@@ -95,7 +113,6 @@ body {
 }
 
 .issue-divider span {
-    font-family: 'Inter', sans-serif;
     font-weight: 800;
     font-size: 0.8rem;
     letter-spacing: 0.4em;
@@ -114,27 +131,11 @@ body {
     overflow: hidden;
 }
 
-.story.centered {
-    align-items: center;
-    text-align: center;
-}
-
-.story.left-aligned,
-.story.dropcap-layout {
-    align-items: flex-start;
-    text-align: left;
-}
-
-.story.stat-layout {
-    align-items: center;
-    text-align: center;
-}
-
-.story.horizontal-layout {
-    flex-direction: row;
-    align-items: center;
-    gap: 4rem;
-}
+.story.centered { align-items: center; text-align: center; }
+.story.left-aligned, .story.dropcap-layout { align-items: flex-start; text-align: left; }
+.story.stat-layout { align-items: center; text-align: center; }
+.story.columns-layout { align-items: flex-start; text-align: left; }
+.story.horizontal-layout { flex-direction: row; align-items: center; gap: 4rem; }
 
 /* ── NUMERALS ── */
 .numeral-overlay {
@@ -168,7 +169,6 @@ body {
     position: absolute;
     top: 2rem;
     right: 2rem;
-    font-family: 'Inter', sans-serif;
     font-size: 2rem;
     font-weight: 900;
     border: 4px solid currentColor;
@@ -189,10 +189,7 @@ body {
     margin-bottom: 2rem;
 }
 
-.numeral-terminal .prompt {
-    color: #00ff41;
-    opacity: 0.5;
-}
+.numeral-terminal .prompt { color: #00ff41; opacity: 0.5; }
 
 .numeral-roman {
     font-family: 'Fraunces', serif;
@@ -229,7 +226,6 @@ body {
 }
 
 .numeral-slide {
-    font-family: 'Inter', sans-serif;
     font-size: clamp(4rem, 10vw, 8rem);
     font-weight: 900;
     color: rgba(255,255,255,0.1);
@@ -247,14 +243,9 @@ body {
 }
 
 /* ── STORY BODY ── */
-.story-body {
-    max-width: 900px;
-    width: 100%;
-    z-index: 1;
-}
+.story-body { max-width: 900px; width: 100%; z-index: 1; }
 
 .story-score {
-    font-family: 'Inter', sans-serif;
     font-size: clamp(1.2rem, 3vw, 2rem);
     font-weight: 800;
     color: #ff6600;
@@ -262,15 +253,21 @@ body {
 }
 
 .story-title {
-    font-family: 'Fraunces', serif;
     font-size: clamp(2.5rem, 6vw, 5rem);
     font-weight: 700;
-    line-height: 1.1;
+    line-height: 1.15;
+    margin-bottom: 0.5rem;
+}
+
+.story-title-en {
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    font-weight: 400;
+    opacity: 0.5;
     margin-bottom: 1.5rem;
+    font-style: italic;
 }
 
 .story-domain {
-    font-family: 'Inter', sans-serif;
     font-size: clamp(0.9rem, 2vw, 1.2rem);
     font-weight: 500;
     opacity: 0.6;
@@ -283,14 +280,12 @@ body {
     display: flex;
     gap: 2rem;
     align-items: center;
-    font-family: 'Inter', sans-serif;
     font-size: clamp(1rem, 2vw, 1.4rem);
     font-weight: 500;
     flex-wrap: wrap;
 }
 
 .story-link {
-    font-family: 'Inter', sans-serif;
     font-size: clamp(1rem, 2vw, 1.4rem);
     font-weight: 700;
     color: #ff6600;
@@ -299,86 +294,43 @@ body {
     padding-bottom: 2px;
 }
 
-.story-link:hover {
-    color: #ff8533;
-}
-
-.story-score-small {
-    opacity: 0.7;
-}
+.story-link:hover { color: #ff8533; }
+.story-score-small { opacity: 0.7; }
 
 /* ── DROP CAP ── */
-.dropcap-layout {
-    flex-direction: row;
-    gap: 2rem;
-    max-width: 1000px;
-}
-
+.dropcap-layout { flex-direction: row; gap: 2rem; max-width: 1000px; }
 .dropcap {
-    font-family: 'Fraunces', serif;
     font-size: clamp(8rem, 20vw, 16rem);
     font-weight: 900;
     line-height: 0.85;
     color: #8b4513;
     flex-shrink: 0;
 }
-
-.story-text-wrap {
-    flex: 1;
-}
-
-.story-text-wrap .story-title {
-    font-size: clamp(2rem, 5vw, 4rem);
-}
+.story-text-wrap { flex: 1; }
+.story-text-wrap .story-title { font-size: clamp(2rem, 5vw, 4rem); }
 
 /* ── STAT LAYOUT ── */
-.stat-layout .stat-score {
+.stat-score {
     font-family: 'Fraunces', serif;
     font-size: clamp(6rem, 20vw, 16rem);
     font-weight: 900;
     color: #ffd700;
     line-height: 1;
 }
-
-.stat-layout .story-title {
-    font-size: clamp(1.8rem, 4vw, 3.5rem);
-    margin-top: 1rem;
-}
+.stat-layout .story-title { font-size: clamp(1.8rem, 4vw, 3.5rem); margin-top: 1rem; }
 
 /* ── HORIZONTAL ── */
-.horizontal-layout {
-    max-width: 100% !important;
-}
-
-.h-left {
-    flex-shrink: 0;
-    text-align: center;
-}
-
-.h-left .story-score {
-    font-size: 3rem;
-}
-
-.h-left .story-comments {
-    font-size: 1rem;
-    opacity: 0.6;
-    margin-top: 0.5rem;
-}
-
-.h-right {
-    flex: 1;
-}
-
-.h-right .story-title {
-    font-size: clamp(2rem, 5vw, 4rem);
-}
+.h-left { flex-shrink: 0; text-align: center; }
+.h-left .story-score { font-size: 3rem; }
+.h-left .story-comments { font-size: 1rem; opacity: 0.6; margin-top: 0.5rem; }
+.h-right { flex: 1; }
+.h-right .story-title { font-size: clamp(2rem, 5vw, 4rem); }
 
 /* ── FOR YOU TAG ── */
 .applies-tag {
     position: absolute;
     top: 2rem;
     left: 2rem;
-    font-family: 'Inter', sans-serif;
     font-size: 0.8rem;
     font-weight: 800;
     letter-spacing: 0.2em;
@@ -425,208 +377,148 @@ body {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
-    .story {
-        padding: 3rem 1.5rem;
-    }
-    .horizontal-layout {
-        flex-direction: column;
-    }
-    .dropcap-layout {
-        flex-direction: column;
-    }
-    .magazine-header .stats {
-        flex-direction: column;
-        gap: 1.5rem;
-    }
+    .story { padding: 3rem 1.5rem; }
+    .horizontal-layout { flex-direction: column; }
+    .dropcap-layout { flex-direction: column; }
+    .magazine-header .stats { flex-direction: column; gap: 1.5rem; }
 }
 
 /* ── SCROLLBAR ── */
-::-webkit-scrollbar {
-    width: 8px;
-}
-::-webkit-scrollbar-track {
-    background: #1a1a1a;
-}
-::-webkit-scrollbar-thumb {
-    background: #ff6600;
-    border-radius: 4px;
-}
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #1a1a1a; }
+::-webkit-scrollbar-thumb { background: #ff6600; border-radius: 4px; }
 </style>
 </head>
 <body>
 
-<!-- ── HEADER ── -->
 <header class="magazine-header">
     <div class="edition">아침판</div>
     <h1>Hacker<br>News</h1>
-    <div class="date-line">April 15, 2026 · 취향에 맞춰 골라봤어요</div>
+    <div class="date-line">2026年 04月 16日 · 취향에 맞춰 골라봤어요</div>
     <div class="stats">
         <div>
             <div class="stat">10</div>
             <div class="stat-label">스토리</div>
         </div>
         <div>
-            <div class="stat">9</div>
+            <div class="stat">10</div>
             <div class="stat-label">나를 위한</div>
         </div>
     </div>
 </header>
 
-<!-- ── DIVIDER ── -->
 <div class="issue-divider"><span>오늘의 선택</span></div>
 
-<!-- ── STORIES ── -->
-
-    <article class="story centered">
-        <div class="numeral-overlay">1</div>
-        <div class="applies-tag">★ FOR YOU</div>
-        
+<article class="story centered"><div class="numeral-overlay">1</div><div class="applies-tag">★ 나를 위한</div>
         <div class="story-body centered">
-            <div class="story-score">237 pts</div>
-            <h2 class="story-title">Elevated errors on Claude.ai, API, Claude Code</h2>
-            <div class="story-domain">claudestatus.com</div>
+            <div class="story-score">152 pts</div>
+            <h2 class="story-title">클로드 오푸스 4.7 모델 카드</h2>
+            <p class="story-title-en">Claude Opus 4.7 Model Card</p>
+            <div class="story-domain">anthropic.com</div>
             <div class="story-meta">
-                <span class="story-comments">211 comments</span>
-                <a href="https://claudestatus.com/" class="story-link" target="_blank">Read →</a>
+                <span class="story-comments">74개의 댓글</span>
+                <a href="https://anthropic.com/claude-opus-4-7-system-card" class="story-link" target="_blank">읽기 →</a>
             </div>
-        </div>
-    </article>
-    <article class="story left">
-        <div class="numeral-big-left"><span class="num">2</span></div>
-        <div class="applies-tag">★ FOR YOU</div>
-        
+        </div></article><article class="story left"><div class="numeral-big-left"><span class="num">2</span></div><div class="applies-tag">★ 나를 위한</div>
         <div class="story-body left-aligned">
-            <div class="story-score">694 pts</div>
-            <h2 class="story-title">Claude Code Routines</h2>
-            <div class="story-domain">code.claude.com</div>
+            <div class="story-score">1268 pts</div>
+            <h2 class="story-title">클로드 오푸스 4.7</h2>
+            <p class="story-title-en">Claude Opus 4.7</p>
+            <div class="story-domain">www.anthropic.com</div>
             <div class="story-meta">
-                <span class="story-comments">395 comments</span>
-                <a href="https://code.claude.com/docs/en/routines" class="story-link" target="_blank">Read →</a>
+                <span class="story-comments">930개의 댓글</span>
+                <a href="https://www.anthropic.com/news/claude-opus-4-7" class="story-link" target="_blank">읽기 →</a>
             </div>
-        </div>
-    </article>
-    <article class="story centered">
-        <div class="numeral-stamp">#3</div>
-        <div class="applies-tag">★ FOR YOU</div>
-        
+        </div></article><article class="story centered"><div class="numeral-stamp">#3</div><div class="applies-tag">★ 나를 위한</div>
         <div class="story-body centered">
-            <div class="story-score">191 pts</div>
-            <h2 class="story-title">Turn your best AI prompts into one-click tools in Chrome</h2>
-            <div class="story-domain">blog.google</div>
-            <div class="story-meta">
-                <span class="story-comments">105 comments</span>
-                <a href="https://blog.google/products-and-platforms/products/chrome/skills-in-chrome/" class="story-link" target="_blank">Read →</a>
-            </div>
-        </div>
-    </article>
-    <article class="story left">
-        <div class="numeral-terminal"><span class="prompt">$</span> 4</div>
-        <div class="applies-tag">★ FOR YOU</div>
-        
-        <div class="story-body left-aligned">
-            <div class="story-score">54 pts</div>
-            <h2 class="story-title">We ran Doom on a 40 year old printer controller (Agfa Compugraphic 9000PS) [video]</h2>
-            <div class="story-domain">www.youtube.com</div>
-            <div class="story-meta">
-                <span class="story-comments">23 comments</span>
-                <a href="https://www.youtube.com/watch?v=cltnlks2-uU" class="story-link" target="_blank">Read →</a>
-            </div>
-        </div>
-    </article>
-    <article class="story left-dropcap">
-        <div class="numeral-roman">V</div>
-        <div class="applies-tag">★ FOR YOU</div>
-        
-        <div class="story-body dropcap-layout">
-            <div class="dropcap">G</div>
-            <div class="story-text-wrap">
-                <h2 class="story-title">Google Gemma 4 Runs Natively on iPhone with Full Offline AI Inference</h2>
-                <div class="story-domain">www.gizmoweek.com</div>
-                <div class="story-meta">
-                    <span class="story-score-small">258 pts · 165 comments</span>
-                    <a href="https://www.gizmoweek.com/gemma-4-runs-iphone/" class="story-link" target="_blank">Read →</a>
-                </div>
-            </div>
-        </div>
-    </article>
-    <article class="story stat">
-        <div class="numeral-giant">6</div>
-        <div class="applies-tag">★ FOR YOU</div>
-        
-        <div class="story-body stat-layout">
-            <div class="stat-score">306</div>
-            <h2 class="story-title">Open Source Isn&#x27;t Dead</h2>
-            <div class="story-domain">www.strix.ai</div>
-            <div class="story-meta">
-                <span class="story-comments">164 comments</span>
-                <a href="https://www.strix.ai/blog/cal-com-is-closing-its-code-due-to-ai-threats" class="story-link" target="_blank">Read →</a>
-            </div>
-        </div>
-    </article>
-    <article class="story columns">
-        <div class="numeral-oldstyle">7</div>
-        <div class="applies-tag">★ FOR YOU</div>
-        
-        <div class="story-body">
-            <h2 class="story-title">Gemini 3.1 Flash TTS: the next generation of expressive AI speech</h2>
-            <div class="story-meta">
-                <span class="story-score-small">12 pts</span>
-                <div class="story-domain">blog.google</div>
-                <span class="story-comments">0 comments</span>
-                <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-flash-tts/" class="story-link" target="_blank">Read →</a>
-            </div>
-        </div>
-    </article>
-    <article class="story centered">
-        <div class="numeral-outline">8</div>
-        <div class="applies-tag">★ FOR YOU</div>
-        
-        <div class="story-body centered">
-            <div class="story-score">106 pts</div>
-            <h2 class="story-title">My adventure in designing API keys</h2>
-            <div class="story-domain">vjay15.github.io</div>
-            <div class="story-meta">
-                <span class="story-comments">72 comments</span>
-                <a href="https://vjay15.github.io/blog/apikeys/" class="story-link" target="_blank">Read →</a>
-            </div>
-        </div>
-    </article>
-    <article class="story horizontal">
-        <div class="numeral-slide">9</div>
-        <div class="applies-tag">★ FOR YOU</div>
-        
-        <div class="story-body horizontal-layout">
-            <div class="h-left">
-                <div class="story-score">70 pts</div>
-                <div class="story-comments">14 comments</div>
-            </div>
-            <div class="h-right">
-                <h2 class="story-title">Installing OpenBSD on the Pomera DM250 Writerdeck</h2>
-                <div class="story-domain">jcs.org</div>
-                <a href="https://jcs.org/2026/04/09/openbsd-dm250" class="story-link" target="_blank">Read →</a>
-            </div>
-        </div>
-    </article>
-    <article class="story centered">
-        <div class="numeral-finish">#10</div>
-        
-        
-        <div class="story-body centered">
-            <div class="story-score">113 pts</div>
-            <h2 class="story-title">Does Gas Town &#x27;steal&#x27; usage from users&#x27; LLM credits to improve itself?</h2>
+            <div class="story-score">74 pts</div>
+            <h2 class="story-title">에이전트 - 기본 Mac OS X 코딩 IDE/하네스</h2>
+            <p class="story-title-en">Agent - Native Mac OS X coding ide/harness</p>
             <div class="story-domain">github.com</div>
             <div class="story-meta">
-                <span class="story-comments">49 comments</span>
-                <a href="https://github.com/gastownhall/gastown/issues/3649" class="story-link" target="_blank">Read →</a>
+                <span class="story-comments">32개의 댓글</span>
+                <a href="https://github.com/macOS26/Agent" class="story-link" target="_blank">읽기 →</a>
             </div>
-        </div>
-    </article>
+        </div></article><article class="story left"><div class="numeral-terminal"><span class="prompt">$</span> 4</div><div class="applies-tag">★ 나를 위한</div>
+        <div class="story-body left-aligned">
+            <div class="story-score">63 pts</div>
+            <h2 class="story-title">HN 표시: CodeBurn – 작업별 Claude Code 토큰 사용량 분석</h2>
+            <p class="story-title-en">Show HN: CodeBurn – Analyze Claude Code token usage by task</p>
+            <div class="story-domain">github.com</div>
+            <div class="story-meta">
+                <span class="story-comments">13개의 댓글</span>
+                <a href="https://github.com/AgentSeal/codeburn" class="story-link" target="_blank">읽기 →</a>
+            </div>
+        </div></article><article class="story left-dropcap"><div class="numeral-roman">V</div><div class="applies-tag">★ 나를 위한</div>
+        <div class="story-body dropcap-layout">
+            <div class="dropcap">A</div>
+            <div class="story-text-wrap">
+                <h2 class="story-title">Android CLI: 모든 에이전트를 사용하여 Android 앱을 3배 더 빠르게 구축</h2>
+                <p class="story-title-en">Android CLI: Build Android apps 3x faster using any agent</p>
+                <div class="story-domain">android-developers.googleblog.com</div>
+                <div class="story-meta">
+                    <span class="story-score-small">41 pts · 12개의 댓글</span>
+                    <a href="https://android-developers.googleblog.com/2026/04/build-android-apps-3x-faster-using-any-agent.html" class="story-link" target="_blank">읽기 →</a>
+                </div>
+            </div>
+        </div></article><article class="story stat"><div class="numeral-giant">6</div><div class="applies-tag">★ 나를 위한</div>
+        <div class="story-body stat-layout">
+            <div class="stat-score">23</div>
+            <h2 class="story-title">생명과학 연구를 위한 GPT‑Rosalind</h2>
+            <p class="story-title-en">GPT‑Rosalind for life sciences research</p>
+            <div class="story-domain">openai.com</div>
+            <div class="story-meta">
+                <span class="story-comments">2개의 댓글</span>
+                <a href="https://openai.com/index/introducing-gpt-rosalind/" class="story-link" target="_blank">읽기 →</a>
+            </div>
+        </div></article><article class="story columns"><div class="numeral-oldstyle">7</div><div class="applies-tag">★ 나를 위한</div>
+        <div class="story-body">
+            <h2 class="story-title">Gemini API에 액세스하는 무제한 Firebase 브라우저 키로 인해 13시간 만에 €54,000 급증</h2>
+            <p class="story-title-en">€54k spike in 13h from unrestricted Firebase browser key accessing Gemini APIs</p>
+            <div class="story-meta">
+                <span class="story-score-small">370 pts</span>
+                <div class="story-domain">discuss.ai.google.dev</div>
+                <span class="story-comments">269개의 댓글</span>
+                <a href="https://discuss.ai.google.dev/t/unexpected-54k-billing-spike-in-13-hours-firebase-browser-key-without-api-restrictions-used-for-gemini-requests/140262" class="story-link" target="_blank">읽기 →</a>
+            </div>
+        </div></article><article class="story centered"><div class="numeral-outline">8</div><div class="applies-tag">★ 나를 위한</div>
+        <div class="story-body centered">
+            <div class="story-score">204 pts</div>
+            <h2 class="story-title">내 노트북의 Qwen3.6-35B-A3B는 Claude Opus 4.7보다 더 나은 펠리컨을 그렸습니다.</h2>
+            <p class="story-title-en">Qwen3.6-35B-A3B on my laptop drew me a better pelican than Claude Opus 4.7</p>
+            <div class="story-domain">simonwillison.net</div>
+            <div class="story-meta">
+                <span class="story-comments">52개의 댓글</span>
+                <a href="https://simonwillison.net/2026/Apr/16/qwen-beats-opus/" class="story-link" target="_blank">읽기 →</a>
+            </div>
+        </div></article><article class="story horizontal"><div class="numeral-slide">9</div><div class="applies-tag">★ 나를 위한</div>
+        <div class="story-body horizontal-layout">
+            <div class="h-left">
+                <div class="story-score">25 pts</div>
+                <div class="story-comments">2개의 댓글</div>
+            </div>
+            <div class="h-right">
+                <h2 class="story-title">비디오, 쇼노트, 링크가 포함된 공식 Clojure 다큐멘터리 페이지</h2>
+                <p class="story-title-en">Official Clojure Documentary page with Video, Shownotes, and Links</p>
+                <div class="story-domain">clojure.org</div>
+                <a href="https://clojure.org/about/documentary" class="story-link" target="_blank">읽기 →</a>
+            </div>
+        </div></article><article class="story centered"><div class="numeral-finish">#10</div><div class="applies-tag">★ 나를 위한</div>
+        <div class="story-body centered">
+            <div class="story-score">7 pts</div>
+            <h2 class="story-title">탭하여 결제는 얼마나 안전합니까? [동영상]</h2>
+            <p class="story-title-en">How Secure Is Tap to Pay? [video]</p>
+            <div class="story-domain">www.youtube.com</div>
+            <div class="story-meta">
+                <span class="story-comments">1개의 댓글</span>
+                <a href="https://www.youtube.com/watch?v=PPJ6NJkmDAo" class="story-link" target="_blank">읽기 →</a>
+            </div>
+        </div></article>
 
-<!-- ── FOOTER ── -->
 <footer class="magazine-footer">
     <h3>내일<br>또 만나요.</h3>
     <p>매일 아침 Hacker News에서 취향에 맞는 이야기를 골라봤어요.</p>
-    <div class="credit">아침판 · April 15, 2026 발행</div>
+    <div class="credit">아침판 · 2026年 04月 16日 발행</div>
 </footer>
 
 </body>
